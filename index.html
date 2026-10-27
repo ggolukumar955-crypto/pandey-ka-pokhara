@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="पांडेय का पोखरा गाँव की वेबसाइट — गाँव की जानकारी, फोटो और संपर्क।">
+  <meta name="theme-color" content="#176b4d">
+  <title>पांडेय का पोखरा | हमारे गाँव की वेबसाइट</title>
+  <style>
+    :root{--green:#176b4d;--deep:#104735;--gold:#f2bd55;--cream:#fffaf0;--ink:#1f2937}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:var(--ink);background:#fff;line-height:1.65}
+    a{color:inherit}
+    .nav{background:var(--deep);color:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0002}
+    .nav-inner{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .brand{font-weight:800;font-size:1.1rem}
+    .links{display:flex;gap:16px;flex-wrap:wrap}.links a{text-decoration:none;font-size:.95rem}
+    .hero{background:linear-gradient(120deg,#0b4b36dd,#176b4dcc),url('images/pokhara-1.jpg') center/cover;color:white}
+    .hero-inner{max-width:1100px;margin:auto;padding:88px 20px 92px}
+    .tag{display:inline-block;background:#ffffff20;border:1px solid #ffffff66;border-radius:999px;padding:5px 13px;font-size:.9rem}
+    h1{font-size:clamp(2.2rem,6vw,4.3rem);line-height:1.16;margin:18px 0 12px;max-width:800px}
+    .hero p{font-size:1.15rem;max-width:650px;color:#f4fff8}
+    .btn{display:inline-block;padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin:10px 8px 0 0}
+    .btn-gold{background:var(--gold);color:#2b261a}.btn-outline{border:1px solid #ffffffaa;color:white}
+    section{padding:58px 20px}.wrap{max-width:1100px;margin:auto}
+    .section-head{text-align:center;margin:0 auto 28px;max-width:700px}
+    .section-head h2{font-size:clamp(1.65rem,4vw,2.4rem);margin:0 0 8px;color:var(--deep)}
+    .section-head p{color:#5b6470;margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{background:white;border:1px solid #e7ece8;border-radius:16px;padding:22px;box-shadow:0 8px 24px #173b2a0a}
+    .icon{font-size:1.8rem}.card h3{margin:8px 0;color:var(--deep)}
+    .about{background:var(--cream)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .about img{width:100%;height:330px;object-fit:cover;border-radius:20px}
+    .note{background:#fff3d7;border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;font-size:.95rem}
+    .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .gallery figure{margin:0;border-radius:14px;overflow:hidden;background:#eef4ef}
+    .gallery img{width:100%;height:220px;object-fit:cover;display:block}
+    .gallery figcaption{padding:10px 12px;font-size:.92rem}
+    .contact{background:#f2f8f4}
+    .contact-box{max-width:720px;margin:auto;text-align:center;background:white;border:1px solid #dfeae2;border-radius:18px;padding:28px}
+    footer{background:#103e2e;color:#e7f5ed;text-align:center;padding:22px 16px;font-size:.92rem}
+    @media(max-width:760px){.hero-inner{padding:64px 20px}.cards,.gallery{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.about img{height:250px}.links{gap:10px}}
+    @media(max-width:480px){.cards,.gallery{grid-template-columns:1fr}.gallery img{height:230px}.nav-inner{align-items:flex-start}.links{width:100%}.hero p{font-size:1rem}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">🌿 पांडेय का पोखरा</div>
+      <div class="links">
+        <a href="#home">होम</a><a href="#about">गाँव के बारे में</a><a href="#gallery">फोटो</a><a href="#contact">संपर्क</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-inner">
+      <span class="tag">उत्तर प्रदेश · हमारा गाँव, हमारी पहचान</span>
+      <h1>स्वागत है<br>पांडेय का पोखरा में</h1>
+      <p>अपनी मिट्टी, अपनी संस्कृति और अपने लोगों से जुड़ने का एक छोटा-सा डिजिटल मंच। गाँव की तस्वीरें और संपर्क जानकारी यहाँ साझा करें।</p>
+      <a class="btn btn-gold" href="#gallery">📸 गाँव की फोटो देखें</a>
+      <a class="btn btn-outline" href="#contact">संपर्क जानकारी</a>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head" style="text-align:left;margin:0 0 18px">
+          <h2>हमारे गाँव के बारे में</h2>
+          <p>अपनापन, परंपरा और एक साथ आगे बढ़ने की भावना।</p>
+        </div>
+        <p>पांडेय का पोखरा, उत्तर प्रदेश की इस वेबसाइट पर आपका स्वागत है। यह पेज गाँव की पहचान, यादगार तस्वीरों और जरूरी संपर्क जानकारी को एक जगह रखने के लिए बनाया गया है।</p>
+        <p>आप यहाँ गाँव की असली तस्वीरें, स्थानीय स्थानों की जानकारी और संपर्क विवरण जोड़ सकते हैं, ताकि गाँव से जुड़े लोग एक-दूसरे से जुड़े रहें।</p>
+        <div class="note"><strong>जानकारी अपडेट करें:</strong> जिला, ब्लॉक, ग्राम पंचायत, पिन कोड और गाँव का संक्षिप्त इतिहास उपलब्ध होने पर यहाँ जोड़ा जा सकता है।</div>
+      </div>
+      <img src="images/pokhara-3.jpg" alt="पांडेय का पोखरा के पास हरियाली" loading="lazy">
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>गाँव की फोटो गैलरी</h2>
+        <p>पांडेय का पोखरा की असली तस्वीरें — पोखरा, किनारे, घाट और गाँव की झलकियाँ।</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/pokhara-1.jpg" alt="पांडेय का पोखरा और किनारे का रास्ता" loading="lazy"><figcaption>🌿 पोखरा और किनारे का रास्ता</figcaption></figure>
+        <figure><img src="images/pokhara-2.jpg" alt="पोखरा के किनारे गाँव के लोग" loading="lazy"><figcaption>🏡 पोखरा के आसपास का दृश्य</figcaption></figure>
+        <figure><img src="images/pokhara-3.jpg" alt="पोखरा के पास हरियाली" loading="lazy"><figcaption>🌳 हरियाली और प्राकृतिक दृश्य</figcaption></figure>
+        <figure><img src="images/pokhara-4.jpg" alt="पोखरा के घाट और सीढ़ियाँ" loading="lazy"><figcaption>🪷 पोखरा का घाट</figcaption></figure>
+        <figure><img src="images/pokhara-5.jpg" alt="पोखरा के किनारे का दृश्य" loading="lazy"><figcaption>💚 पोखरा की सुंदरता</figcaption></figure>
+        <figure><img src="images/pokhara-6.jpg" alt="गाँव में पूजा की तैयारी" loading="lazy"><figcaption>🙏 गाँव की परंपरा और पूजा</figcaption></figure>
+        <figure><img src="images/pokhara-7.jpg" alt="पोखरा के पास बच्चे" loading="lazy"><figcaption>😊 गाँव की प्यारी यादें</figcaption></figure>
+        <figure><img src="images/pokhara-8.jpg" alt="पोखरा का खुला किनारा" loading="lazy"><figcaption>🌾 पोखरा का किनारा</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fffaf0">
+    <div class="wrap">
+      <div class="section-head"><h2>गाँव की खास बातें</h2><p>अपने गाँव की जानकारी से इन हिस्सों को और उपयोगी बनाएँ।</p></div>
+      <div class="cards">
+        <article class="card"><div class="icon">🧭</div><h3>स्थान और रास्ता</h3><p>गाँव तक पहुँचने का रास्ता और नजदीकी प्रमुख स्थानों की जानकारी यहाँ जोड़ें।</p></article>
+        <article class="card"><div class="icon">🤝</div><h3>गाँव के लोग</h3><p>गाँव के आयोजनों, उपलब्धियों और सामुदायिक गतिविधियों की जानकारी साझा करें।</p></article>
+        <article class="card"><div class="icon">📣</div><h3>जरूरी सूचना</h3><p>गाँव से जुड़ी सार्वजनिक सूचनाएँ और कार्यक्रमों की जानकारी यहाँ प्रकाशित करें।</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head"><h2>संपर्क जानकारी</h2><p>गाँव से संबंधित सुझाव या जानकारी साझा करने के लिए।</p></div>
+      <div class="contact-box">
+        <div class="icon">📬</div>
+        <h3>पांडेय का पोखरा</h3>
+        <p>उत्तर प्रदेश, भारत</p>
+        <p>संपर्क व्यक्ति का नाम, मोबाइल नंबर और ईमेल अभी जोड़ा जाना बाकी है।</p>
+        <a class="btn btn-gold" href="mailto:">ईमेल जोड़ें</a>
+        <p style="font-size:.85rem;color:#667085;margin-top:16px">सुरक्षा के लिए केवल वही संपर्क विवरण प्रकाशित करें जिन्हें सार्वजनिक करना चाहते हैं।</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div>© <span id="year"></span> पांडेय का पोखरा · गाँव की अपनी वेबसाइट</div>
+    <div>प्यार और सम्मान के साथ बनाया गया 💚</div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
