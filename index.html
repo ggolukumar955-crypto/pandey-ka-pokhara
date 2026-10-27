@@ -1,91 +1,805 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="पांडेय का पोखरा गाँव की वेबसाइट — गाँव की जानकारी, फोटो और संपर्क।">
-  <meta name="theme-color" content="#176b4d">
-  <title>पांडेय का पोखरा | हमारे गाँव की वेबसाइट</title>
-  <style>
-    :root{--green:#176b4d;--deep:#104735;--gold:#f2bd55;--cream:#fffaf0;--ink:#1f2937}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:var(--ink);background:#fff;line-height:1.65}
-    a{color:inherit}
-    .nav{background:var(--deep);color:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0002}
-    .nav-inner{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .brand{font-weight:800;font-size:1.1rem}
-    .links{display:flex;gap:16px;flex-wrap:wrap}.links a{text-decoration:none;font-size:.95rem}
-    .hero{background:linear-gradient(120deg,#0b4b36dd,#176b4dcc),url('images/pokhara-1.jpg') center/cover;color:white}
-    .hero-inner{max-width:1100px;margin:auto;padding:88px 20px 92px}
-    .tag{display:inline-block;background:#ffffff20;border:1px solid #ffffff66;border-radius:999px;padding:5px 13px;font-size:.9rem}
-    h1{font-size:clamp(2.2rem,6vw,4.3rem);line-height:1.16;margin:18px 0 12px;max-width:800px}
-    .hero p{font-size:1.15rem;max-width:650px;color:#f4fff8}
-    .btn{display:inline-block;padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin:10px 8px 0 0}
-    .btn-gold{background:var(--gold);color:#2b261a}.btn-outline{border:1px solid #ffffffaa;color:white}
-    section{padding:58px 20px}.wrap{max-width:1100px;margin:auto}
-    .section-head{text-align:center;margin:0 auto 28px;max-width:700px}
-    .section-head h2{font-size:clamp(1.65rem,4vw,2.4rem);margin:0 0 8px;color:var(--deep)}
-    .section-head p{color:#5b6470;margin:0}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .card{background:white;border:1px solid #e7ece8;border-radius:16px;padding:22px;box-shadow:0 8px 24px #173b2a0a}
-    .icon{font-size:1.8rem}.card h3{margin:8px 0;color:var(--deep)}
-    .about{background:var(--cream)}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-    .about img{width:100%;height:330px;object-fit:cover;border-radius:20px}
-    .note{background:#fff3d7;border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;font-size:.95rem}
-    .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .gallery figure{margin:0;border-radius:14px;overflow:hidden;background:#eef4ef}
-    .gallery img{width:100%;height:220px;object-fit:cover;display:block}
-    .gallery figcaption{padding:10px 12px;font-size:.92rem}
-    .contact{background:#f2f8f4}
-    .contact-box{max-width:720px;margin:auto;text-align:center;background:white;border:1px solid #dfeae2;border-radius:18px;padding:28px}
-    footer{background:#103e2e;color:#e7f5ed;text-align:center;padding:22px 16px;font-size:.92rem}
-    @media(max-width:760px){.hero-inner{padding:64px 20px}.cards,.gallery{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.about img{height:250px}.links{gap:10px}}
-    @media(max-width:480px){.cards,.gallery{grid-template-columns:1fr}.gallery img{height:230px}.nav-inner{align-items:flex-start}.links{width:100%}.hero p{font-size:1rem}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पांडेय का पोखरा (Pandey Ka Pokhara) - Gramin Darshan</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Devanagari Serif & Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Noto+Serif+Devanagari:wght@400;600;700;800&family=Yatra+One&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        clay: {
+                            100: '#f7ebe1',
+                            200: '#ebd4c1',
+                            500: '#c27651',
+                            700: '#9b4f2c',
+                            800: '#7a3b1d',
+                            900: '#4a210d',
+                        },
+                        marigold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        pond: {
+                            100: '#e0f2fe',
+                            300: '#7dd3fc',
+                            500: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        leaf: {
+                            600: '#15803d',
+                            800: '#166534',
+                        }
+                    },
+                    fontFamily: {
+                        yatra: ['"Yatra One"', 'serif'],
+                        rozha: ['"Rozha One"', 'serif'],
+                        devanagari: ['"Noto Serif Devanagari"', 'serif'],
+                        poppins: ['"Poppins"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Village Aesthetic Background Textures & Patterns */
+        body {
+            background-color: #fcf7f2;
+            background-image: radial-gradient(#e5d5c5 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+
+        .night-mode-bg {
+            background-color: #0b1329 !important;
+            background-image: radial-gradient(#1a294d 0.75px, transparent 0.75px) !important;
+        }
+
+        /* Clay & Mud Board Styling */
+        .mud-card {
+            background: linear-gradient(145deg, #fffcf8, #f5ebd9);
+            border: 2px solid #e0c8b0;
+            box-shadow: 4px 6px 15px rgba(122, 59, 29, 0.08);
+            border-radius: 1.25rem;
+        }
+
+        .dark .mud-card {
+            background: linear-gradient(145deg, #162038, #0f172a);
+            border: 1px solid #1e293b;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Wooden Noticeboard Frame */
+        .wooden-board {
+            background: #62361b;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.1) 15px, rgba(0,0,0,0.1) 30px);
+            border: 8px solid #42220e;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6), 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .notice-paper {
+            background: #fcf6e6;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+            transform: rotate(-1deg);
+        }
+        .notice-paper:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        /* Water Ripple Effect */
+        @keyframes ripple {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+
+        .pond-ripple {
+            animation: ripple 6s infinite ease-in-out;
+        }
+
+        /* Floating Lotus & Diya Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .floating-element {
+            animation: floatSlow 4s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f7ebe1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9b4f2c;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand">🌿 पांडेय का पोखरा</div>
-      <div class="links">
-        <a href="#home">होम</a><a href="#about">गाँव के बारे में</a><a href="#gallery">फोटो</a><a href="#संपर्क जानकारी">संपर्क</a>
-      </div>
-    </div>
-  </nav>
+<body class="font-poppins text-slate-800 transition-colors duration-500 selection:bg-amber-500 selection:text-white" id="main-body">
 
-  <header class="hero" id="home">
-    <div class="hero-inner">
-      <span class="tag">उत्तर प्रदेश · हमारा गाँव, हमारी पहचान</span>
-      <h1>स्वागत है<br>पांडेय का पोखरा में</h1>
-      <p>अपनी मिट्टी, अपनी संस्कृति और अपने लोगों से जुड़ने का एक छोटा-सा डिजिटल मंच। गाँव की तस्वीरें और संपर्क जानकारी यहाँ साझा करें।</p>
-      <a class="btn btn-gold" href="#gallery">📸 गाँव की फोटो देखें</a>
-      <a class="btn btn-outline" href="#8795047737">संपर्क जानकारी</a>
-    </div>
-  </header>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-clay-100/80 dark:bg-slate-900/80 border-b border-clay-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-clay-700 via-amber-600 to-marigold-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-clay-800/20">
+                    <i class="fa-solid fa-water"></i>
+                </div>
+                <div>
+                    <h1 class="font-yatra text-2xl font-bold text-clay-900 dark:text-amber-200 leading-tight">पांडेय का पोखरा</h1>
+                    <p class="text-[11px] font-medium tracking-wider text-clay-700 dark:text-amber-400/80 uppercase">Pandey Ka Pokhara Village</p>
+                </div>
+            </a>
 
-  <section id="about" class="about">
-    <div class="wrap about-grid">
-      <div>
-        <div class="section-head" style="text-align:left;margin:0 0 18px">
-          <h2>हमारे गाँव के बारे में</h2>
-          <p>अपनापन, परंपरा और एक साथ आगे बढ़ने की भावना।</p>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 font-devanagari font-semibold text-slate-700 dark:text-slate-200 text-sm">
+                <a href="#pokhara-center" class="hover:text-clay-700 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-compass text-clay-500"></i> केंद्र पोखरा नक्शा</a>
+                <a href="#village-life" class="hover:text-clay-700 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-house-chimney-window text-clay-500"></i> पोखरे के किनारे घर</a>
+                <a href="#festivals" class="hover:text-clay-700 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-om text-clay-500"></i> छठ व आरती घाट</a>
+                <a href="#chaupal" class="hover:text-clay-700 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-note-sticky text-clay-500"></i> ग्राम चौपाल</a>
+                <a href="#directory" class="hover:text-clay-700 dark:hover:text-amber-400 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-address-book text-clay-500"></i> पंचायत संपर्क</a>
+            </nav>
+
+            <!-- Quick Action & Day/Night Ambient Toggle -->
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-clay-200/60 dark:bg-slate-800 text-slate-700 dark:text-amber-300 hover:scale-105 transition-all" title="Toggle Day/Night View">
+                    <i class="fa-solid fa-sun text-lg dark:hidden"></i>
+                    <i class="fa-solid fa-moon text-lg hidden dark:block"></i>
+                </button>
+
+                <a href="#diya-section" class="px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-clay-700 text-white font-devanagari font-semibold text-xs shadow-md hover:brightness-110 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-amber-200"></i> दीया जलाएं
+                </a>
+            </div>
         </div>
-        <p>पांडेय का पोखरा, उत्तर प्रदेश की इस वेबसाइट पर आपका स्वागत है। यह पेज गाँव की पहचान, यादगार तस्वीरों और जरूरी संपर्क जानकारी को एक जगह रखने के लिए बनाया गया है।</p>
-        <p>आप यहाँ गाँव की असली तस्वीरें, स्थानीय स्थानों की जानकारी और संपर्क विवरण जोड़ सकते हैं, ताकि गाँव से जुड़े लोग एक-दूसरे से जुड़े रहें।</p>
-        <div class="note"><strong>जानकारी अपडेट करें:</strong> जिला, ब्लॉक, ग्राम पंचायत, पिन कोड और गाँव का संक्षिप्त इतिहास उपलब्ध होने पर यहाँ जोड़ा जा सकता है।</div>
-      </div>
-      <img src="images/pokhara-3.jpg" alt="पांडेय का पोखरा के पास हरियाली" loading="lazy">
-    </div>
-  </section>
+    </header>
 
-  <section id="gallery">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>गाँव की फोटो गैलरी</h2>
-        <p>पांडेय का पोखरा की असली तस्वीरें — पोखरा, किनारे, घाट और गाँव की झलकियाँ।</p>
-      </div>
+    <!-- Hero Section -->
+    <section id="hero" class="relative py-12 lg:py-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-devanagari font-semibold mb-4">
+                <i class="fa-solid fa-wheat-awn text-marigold-500"></i> पवित्र पोखरे के तट पर बसा ठेठ भारतीय गाँव
+            </div>
+            
+            <h1 class="font-yatra text-4xl sm:text-6xl md:text-7xl font-bold text-clay-900 dark:text-amber-100 mb-4 tracking-wide leading-tight">
+                पोखरे के किनारे-किनारे बसा गाँव
+            </h1>
+            <p class="font-devanagari text-lg sm:text-2xl text-clay-800 dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed">
+                "पांडेय का पोखरा" – जहाँ जीवन की शुरुआत शीतल पोखरे की लहरों से होती है, जिसके मुहाने पर मिट्टी और ईंट के आशियाने बसे हैं।
+            </p>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-4 font-devanagari">
+                <a href="#pokhara-center" class="px-6 py-3.5 rounded-xl bg-clay-700 hover:bg-clay-800 text-white font-bold text-sm shadow-xl shadow-clay-900/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot"></i> पोखरा व गाँव का नक्शा देखें
+                </a>
+                <a href="#diya-section" class="px-6 py-3.5 rounded-xl bg-amber-100 dark:bg-slate-800 hover:bg-amber-200 text-clay-900 dark:text-amber-200 font-bold text-sm border border-amber-300/60 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-fan text-marigold-500"></i> पोखरे में कमल अर्पित करें
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTERPIECE: Village Center Map & Central Pokhara Lake -->
+    <section id="pokhara-center" class="py-12 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="font-devanagari text-clay-700 dark:text-amber-400 font-bold text-sm uppercase tracking-wider">गाँव का मुख्य दिल</span>
+                <h2 class="font-yatra text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1">केंद्रीय पोखरा व तटवर्ती घर</h2>
+                <p class="font-devanagari text-slate-600 dark:text-slate-400 text-sm mt-2">
+                    नक्शे पर अलग-अलग स्थानों (घाट, घर, बरगद का पेड़, मंदिर) पर क्लिक करके जानकारी प्राप्त करें।
+                </p>
+            </div>
+
+            <!-- Village Interactive 2D Map Container -->
+            <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-clay-300 dark:border-slate-700 bg-gradient-to-b from-amber-100 via-amber-50 to-emerald-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-4 sm:p-8">
+                
+                <!-- Birds Flying SVG Effect in background -->
+                <div class="absolute top-6 left-12 text-slate-400/40 text-xl flex gap-6 animate-pulse">
+                    <i class="fa-solid fa-crow -rotate-12"></i>
+                    <i class="fa-solid fa-crow text-sm mt-2"></i>
+                </div>
+
+                <!-- Central Pokhara Interactive Visual Layout -->
+                <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] max-h-[620px] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center border-2 border-clay-200/60">
+                    
+                    <!-- Mud Path Overlay surrounding Pokhara -->
+                    <div class="absolute inset-4 rounded-[40%] bg-gradient-to-r from-amber-200 via-clay-200 to-amber-200 dark:from-amber-900/30 dark:via-clay-900/40 dark:to-amber-900/30 opacity-80 border-4 border-dashed border-amber-700/30"></div>
+
+                    <!-- CENTRAL POKHARA LAKE CANVAS / SVG ANIMATION -->
+                    <div class="relative w-[75%] h-[75%] rounded-[50%] bg-gradient-to-tr from-pond-700 via-pond-500 to-cyan-400 p-2 shadow-2xl overflow-hidden cursor-pointer group" id="lake-area">
+                        
+                        <!-- Water Ripple Rings -->
+                        <div class="absolute inset-0 rounded-[50%] border-4 border-white/20 pond-ripple"></div>
+                        <div class="absolute inset-6 rounded-[50%] border-2 border-white/30 pond-ripple" style="animation-delay: 2s;"></div>
+                        <div class="absolute inset-12 rounded-[50%] border border-white/40 pond-ripple" style="animation-delay: 4s;"></div>
+
+                        <!-- Canvas for Animated Swimming Fishes -->
+                        <canvas id="fishCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+                        <!-- Floating Lotuses and Diya Container -->
+                        <div id="floating-objects-layer" class="absolute inset-0 pointer-events-none">
+                            <!-- Preloaded Floating Items -->
+                            <div class="absolute top-[35%] left-[40%] floating-element text-pink-300 text-2xl drop-shadow-md" title="गुलाबी कमल">🌸</div>
+                            <div class="absolute top-[55%] left-[60%] floating-element text-amber-300 text-xl drop-shadow-md" style="animation-delay: 1.5s;" title="सजल दीया">🪔</div>
+                            <div class="absolute top-[60%] left-[30%] floating-element text-pink-400 text-2xl drop-shadow-md" style="animation-delay: 2.5s;" title="खिला कमल">🪷</div>
+                        </div>
+
+                        <!-- Center Lake Badge Label -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div class="px-4 py-2 rounded-full bg-slate-900/60 backdrop-blur-md text-amber-200 border border-amber-300/40 font-yatra text-xs sm:text-base tracking-widest text-center shadow-lg">
+                                🌊 पांडेय का मुख्य पोखरा 🌊
+                                <span class="block text-[10px] font-devanagari text-slate-300 font-normal">शीतल व पवित्र जल क्षेत्र</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HOTSPOT NODES SURROUNDING THE CENTRAL POKHARA LAKE ("Pokhare ke kinare kinare ghar") -->
+                    
+                    <!-- 1. North Ghat & Sun Temple -->
+                    <button onclick="showNodeDetails('north-ghat')" class="absolute top-[4%] left-[48%] -translate-x-1/2 bg-amber-600 hover:bg-amber-700 text-white p-2.5 sm:px-4 sm:py-2 rounded-2xl shadow-xl border-2 border-white flex items-center gap-2 hover:scale-110 transition-transform group">
+                        <i class="fa-solid fa-place-of-worship text-amber-200 text-lg"></i>
+                        <span class="hidden sm:inline font-devanagari font-bold text-xs">उत्तरी छठ घाट व मंदिर</span>
+                    </button>
+
+                    <!-- 2. East Houses (पांडेय टोला / मकान) -->
+                    <button onclick="showNodeDetails('east-houses')" class="absolute top-[30%] right-[3%] sm:right-[6%] bg-clay-700 hover:bg-clay-800 text-white p-2.5 sm:px-4 sm:py-2 rounded-2xl shadow-xl border-2 border-white flex items-center gap-2 hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-house-chimney text-amber-300 text-lg"></i>
+                        <span class="hidden sm:inline font-devanagari font-bold text-xs">पूर्वी टोला (तटवर्ती घर)</span>
+                    </button>
+
+                    <!-- 3. South Gram Panchayat Chaupal & Peepal Tree -->
+                    <button onclick="showNodeDetails('south-chaupal')" class="absolute bottom-[4%] left-[48%] -translate-x-1/2 bg-leaf-600 hover:bg-leaf-800 text-white p-2.5 sm:px-4 sm:py-2 rounded-2xl shadow-xl border-2 border-white flex items-center gap-2 hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-tree text-amber-200 text-lg"></i>
+                        <span class="hidden sm:inline font-devanagari font-bold text-xs">पुराना पीपल चबूतरा व चौपाल</span>
+                    </button>
+
+                    <!-- 4. West Houses & Aangan (पश्चिमी बस्ती) -->
+                    <button onclick="showNodeDetails('west-houses')" class="absolute top-[30%] left-[3%] sm:left-[6%] bg-clay-700 hover:bg-clay-800 text-white p-2.5 sm:px-4 sm:py-2 rounded-2xl shadow-xl border-2 border-white flex items-center gap-2 hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-house-crack text-amber-300 text-lg"></i>
+                        <span class="hidden sm:inline font-devanagari font-bold text-xs">पश्चिमी बस्ती व आंगन</span>
+                    </button>
+
+                    <!-- 5. South-East Duck Farm & Mustard Fields -->
+                    <button onclick="showNodeDetails('south-fields')" class="absolute bottom-[18%] right-[8%] bg-amber-500 hover:bg-amber-600 text-white p-2.5 sm:px-3 sm:py-1.5 rounded-2xl shadow-xl border-2 border-white flex items-center gap-2 hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wheat-awn text-amber-100"></i>
+                        <span class="hidden sm:inline font-devanagari font-bold text-xs">सरसों खेत व बतख शाला</span>
+                    </button>
+
+                </div>
+
+                <!-- Bottom Helper instruction bar -->
+                <div class="mt-4 flex flex-wrap items-center justify-between text-xs font-devanagari text-slate-600 dark:text-slate-400 px-2 gap-2">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-circle-info text-amber-600"></i> मानचित्र पर किसी भी स्थल पर क्लिक करके विस्तृत विवरण पढ़ें।</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-water text-pond-500"></i> पोखरा स्वच्छ एवं संरक्षित जल निधि है।</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Node Detail Interactive Modal -->
+    <div id="node-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="mud-card max-w-lg w-full p-6 relative animate-bounce-short">
+            <button onclick="closeNodeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-clay-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Diya & Lotus Offering Experience -->
+    <section id="diya-section" class="py-16 bg-gradient-to-b from-amber-100/50 via-clay-100/40 to-transparent dark:from-slate-900 dark:to-slate-950 border-y border-clay-200/60 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="mud-card p-6 sm:p-10 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/20 text-amber-800 dark:text-amber-300 font-devanagari font-bold text-xs">
+                            <i class="fa-solid fa-fire-flame-curved text-amber-600"></i> श्रद्धा एवं शुभकामना अर्पण
+                        </div>
+                        <h2 class="font-yatra text-3xl font-bold text-clay-900 dark:text-amber-100">
+                            पोखरे में दीया या कमल प्रवाहित करें
+                        </h2>
+                        <p class="font-devanagari text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                            गाँव के इस पवित्र पोखरे में अपनी मनोकामना या नाम के साथ सुंदर जलदीप (दीया) या गुलाबी कमल तैरने के लिए छोड़ें।
+                        </p>
+
+                        <form id="diya-form" class="space-y-4 pt-2">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block font-devanagari text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">आपका नाम (Name)</label>
+                                    <input type="text" id="offering-name" required placeholder="जैसे: सुमित पांडेय" class="w-full px-4 py-2.5 rounded-xl border border-clay-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-devanagari focus:ring-2 focus:ring-amber-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block font-devanagari text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">प्रकार चुने (Choose Offering)</label>
+                                    <select id="offering-type" class="w-full px-4 py-2.5 rounded-xl border border-clay-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm font-devanagari focus:ring-2 focus:ring-amber-500 outline-none">
+                                        <option value="diya">🪔 सजल दीया (Glowing Diya)</option>
+                                        <option value="lotus">🪷 गुलाबी कमल (Pink Lotus)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-clay-700 text-white font-devanagari font-bold text-sm shadow-md hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-hand-holding-heart"></i> पोखरे में प्रवाहित करें
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="lg:col-span-5 text-center flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-clay-200 dark:border-slate-800 pt-6 lg:pt-0">
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-amber-400 to-clay-700 flex items-center justify-center text-white text-5xl shadow-xl floating-element mb-3">
+                            🪔
+                        </div>
+                        <p class="font-devanagari text-xs text-slate-600 dark:text-slate-400 max-w-xs">
+                            "दीप जलें पोखरे की लहरों पर, सुख-समृद्धि आए आपके घर।"
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Village Houses & Life Section ("Pokhare ke kinare kinare gahar base hai") -->
+    <section id="village-life" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="font-devanagari text-clay-700 dark:text-amber-400 font-bold text-sm uppercase">तटवर्ती ग्रामीण जीवन</span>
+                <h2 class="font-yatra text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1">पोखरे के किनारे बसे घर व जीवनशैली</h2>
+                <div class="w-16 h-1 bg-amber-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="mud-card p-6 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="w-full h-48 rounded-xl overflow-hidden mb-5 relative">
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Kachha/Pakka House by Pond" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/9b4f2c/ffffff?text=Village+Houses+by+Lake'">
+                            <span class="absolute top-3 left-3 bg-amber-600 text-white font-devanagari text-[11px] px-2.5 py-1 rounded-md">पारंपरिक स्थापत्य</span>
+                        </div>
+                        <h3 class="font-devanagari text-xl font-bold text-clay-900 dark:text-amber-200 mb-2">तटवर्ती घर व आंगन (Aangan)</h3>
+                        <p class="font-devanagari text-slate-650 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            पोखरे के मुहाने पर बने घरों में सुबह की पहली हवा पानी से होकर आती है। खपरैल की छतें, लिपे-पुते आंगन और तुलसी के पौधे गाँव की सादगी बिखेरते हैं।
+                        </p>
+                    </div>
+                    <span class="font-devanagari text-xs text-clay-700 dark:text-amber-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-house text-amber-500"></i> शीतल एवं प्राकृतिक वातावरण
+                    </span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="mud-card p-6 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="w-full h-48 rounded-xl overflow-hidden mb-5 relative">
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Mustard and Wheat Fields" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/15803d/ffffff?text=Lush+Fields+Around+Pond'">
+                            <span class="absolute top-3 left-3 bg-leaf-600 text-white font-devanagari text-[11px] px-2.5 py-1 rounded-md">कृषि एवं हरियाली</span>
+                        </div>
+                        <h3 class="font-devanagari text-xl font-bold text-clay-900 dark:text-amber-200 mb-2">खेत-खलिहान व पोखरा सिंचाई</h3>
+                        <p class="font-devanagari text-slate-650 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            पोखरे के चारों ओर लहलहाते सरसों और गेहूं के खेत हैं। पोखरे का जल आसपास की भूमि को उपजाऊ और हरा-भरा बनाए रखता है।
+                        </p>
+                    </div>
+                    <span class="font-devanagari text-xs text-leaf-600 dark:text-green-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-wheat-awn text-amber-500"></i> जैविक एवं समृद्ध फसलें
+                    </span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="mud-card p-6 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+                    <div>
+                        <div class="w-full h-48 rounded-xl overflow-hidden mb-5 relative">
+                            <img src="https://images.unsplash.com/photo-1590400599102-0a1e5c2d3348?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Village Gathering at Banyan Tree" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Village+Chaupal'">
+                            <span class="absolute top-3 left-3 bg-clay-800 text-white font-devanagari text-[11px] px-2.5 py-1 rounded-md">संस्कृति</span>
+                        </div>
+                        <h3 class="font-devanagari text-xl font-bold text-clay-900 dark:text-amber-200 mb-2">पीपल चबूतरा व गपशप</h3>
+                        <p class="font-devanagari text-slate-650 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                            शाम ढलते ही पोखरे के किनारे बने पक्के चबूतरों पर गाँव के बुजुर्ग और युवा एकत्र होते हैं। यहाँ सुख-दुख और देश-दुनिया की चर्चाएँ होती हैं।
+                        </p>
+                    </div>
+                    <span class="font-devanagari text-xs text-clay-700 dark:text-amber-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-comments text-amber-500"></i> भाईचारा व अटूट संबंध
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Festivals & Evening Aarti at Pokhara Ghat -->
+    <section id="festivals" class="py-16 bg-gradient-to-r from-clay-900 via-clay-800 to-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-5">
+                    <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-devanagari font-semibold text-xs border border-amber-400/30">
+                        <i class="fa-solid fa-sun text-amber-400"></i> छठ महापर्व व पावन संध्या
+                    </span>
+                    <h2 class="font-yatra text-3xl sm:text-5xl text-amber-100 leading-tight">
+                        पोखरे पर छठ पूजा व संध्या आरती
+                    </h2>
+                    <p class="font-devanagari text-slate-300 text-base leading-relaxed">
+                        'पांडेय का पोखरा' गाँव में छठ पूजा का पर्व अद्भुत और भव्य होता है। पोखरे के चारों किनारों पर बने घाट दीयों की रोशनी से जगमगा उठते हैं।
+                    </p>
+                    
+                    <ul class="space-y-3 font-devanagari text-sm text-slate-200">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-om text-amber-400 text-base"></i> अस्ताचलगामी और उगते सूर्य को अर्घ्य दान</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-base"></i> पोखरे के चारों तरफ जगमगाते घाट</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-music text-amber-400 text-base"></i> पारंपरिक लोकगीत व शंख ध्वनि</li>
+                    </ul>
+                </div>
+
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden border-4 border-amber-400/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800&auto=format&fit=crop" 
+                             alt="Chhath Puja Lighting at Lake" class="w-full h-80 sm:h-96 object-cover"
+                             onerror="this.src='https://placehold.co/800x600/7a3b1d/ffffff?text=Chhath+Ghat+Lighting'">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-amber-500 text-slate-950 p-4 rounded-2xl shadow-xl font-devanagari hidden sm:block">
+                        <p class="text-2xl font-extrabold font-yatra">1000+</p>
+                        <p class="text-xs font-bold uppercase">श्रद्धालु घाट पर उपस्थित</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Village Wooden Noticeboard / Chaupal Wall -->
+    <section id="chaupal" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="font-devanagari text-clay-700 dark:text-amber-400 font-bold text-sm uppercase">ग्रामीण संवाद</span>
+                <h2 class="font-yatra text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1">ग्राम चौपाल सूचना पट्ट (Notice Board)</h2>
+                <p class="font-devanagari text-slate-600 dark:text-slate-400 text-sm mt-2">गाँव की खबरें, घोषणाएँ और ग्रामीणों के संदेश</p>
+            </div>
+
+            <!-- Wooden Board Frame -->
+            <div class="wooden-board rounded-3xl p-6 sm:p-10 max-w-5xl mx-auto">
+                
+                <!-- Notice Papers Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="notice-container">
+                    
+                    <!-- Notice 1 -->
+                    <div class="notice-paper p-5 rounded-lg text-slate-900 relative">
+                        <div class="w-4 h-4 rounded-full bg-red-600 shadow-md absolute -top-2 left-1/2 -translate-x-1/2"></div>
+                        <span class="text-[10px] font-bold text-clay-800 font-devanagari block mb-1">📢 ग्राम पंचायत घोषणा</span>
+                        <h4 class="font-devanagari font-bold text-base mb-2">पोखरा स्वच्छता अभियान</h4>
+                        <p class="font-devanagari text-xs text-slate-700 leading-relaxed">
+                            इस रविवार प्रातः 7:00 बजे से पोखरे के चारों घाटों की सफाई का सामूहिक श्रमदान कार्यक्रम है। सभी ग्रामीण सादर आमंत्रित हैं।
+                        </p>
+                        <span class="text-[10px] text-slate-500 font-devanagari block mt-3 text-right">- ग्राम प्रधान</span>
+                    </div>
+
+                    <!-- Notice 2 -->
+                    <div class="notice-paper p-5 rounded-lg text-slate-900 relative">
+                        <div class="w-4 h-4 rounded-full bg-amber-600 shadow-md absolute -top-2 left-1/2 -translate-x-1/2"></div>
+                        <span class="text-[10px] font-bold text-clay-800 font-devanagari block mb-1">🎉 उत्सव सूचना</span>
+                        <h4 class="font-devanagari font-bold text-base mb-2">संध्या आरती व कीर्तन</h4>
+                        <p class="font-devanagari text-xs text-slate-700 leading-relaxed">
+                            पूर्वी शिव मंदिर घाट पर प्रत्येक मंगलवार शाम 6:30 बजे भव्य आरती एवं सुंदरकांड पाठ का आयोजन रहेगा।
+                        </p>
+                        <span class="text-[10px] text-slate-500 font-devanagari block mt-3 text-right">- मंदिर समिति</span>
+                    </div>
+
+                    <!-- Notice 3 -->
+                    <div class="notice-paper p-5 rounded-lg text-slate-900 relative">
+                        <div class="w-4 h-4 rounded-full bg-blue-600 shadow-md absolute -top-2 left-1/2 -translate-x-1/2"></div>
+                        <span class="text-[10px] font-bold text-clay-800 font-devanagari block mb-1">🌾 कृषि सलाह</span>
+                        <h4 class="font-devanagari font-bold text-base mb-2">गेहूं की सिंचाई व देखभाल</h4>
+                        <p class="font-devanagari text-xs text-slate-700 leading-relaxed">
+                            पोखरे से जल लेने वाले किसान भाई समय पर पहली सिंचाई पूर्ण करें। जैविक खाद प्रयोग हेतु केंद्र पर संपर्क करें।
+                        </p>
+                        <span class="text-[10px] text-slate-500 font-devanagari block mt-3 text-right">- किसान मित्र</span>
+                    </div>
+
+                </div>
+
+                <!-- Post Message Section -->
+                <div class="mt-8 pt-6 border-t border-amber-900/40 text-center">
+                    <button onclick="toggleNoticeForm()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-devanagari font-bold text-xs shadow-lg transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-pen-nib"></i> नया संदेश सूचना पट्ट पर चिपकाएं
+                    </button>
+
+                    <!-- Hidden Form for Adding Notice -->
+                    <form id="notice-form" class="hidden max-w-md mx-auto mt-4 p-4 bg-amber-50 rounded-xl text-left space-y-3">
+                        <input type="text" id="notice-title" required placeholder="विषय (Title)" class="w-full px-3 py-2 rounded-lg border border-amber-300 text-xs font-devanagari outline-none">
+                        <textarea id="notice-body" rows="3" required placeholder="आपका संदेश (Message)" class="w-full px-3 py-2 rounded-lg border border-amber-300 text-xs font-devanagari outline-none resize-none"></textarea>
+                        <input type="text" id="notice-author" required placeholder="आपका नाम / पद" class="w-full px-3 py-2 rounded-lg border border-amber-300 text-xs font-devanagari outline-none">
+                        <button type="submit" class="w-full py-2 bg-clay-700 text-white font-devanagari text-xs font-bold rounded-lg hover:bg-clay-800">
+                            पट्ट पर पोस्ट करें
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Panchayat Directory & Emergency Contacts -->
+    <section id="directory" class="py-16 bg-clay-100/40 dark:bg-slate-900/60 border-t border-clay-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="font-devanagari text-clay-700 dark:text-amber-400 font-bold text-sm uppercase">सृष्टि डिजिटल सेवा केंद्र डेहरी</span>
+                <h2 class="font-yatra text-3xl sm:text-4xl text-slate-900 dark:text-white mt-1">संजीव कुमार</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-devanagari">
+                
+                <div class="mud-card p-5 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-clay-700 text-white flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-amber-200 text-sm">जन सेवा केंद्र </h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">सृष्टि डिजिटल सेवा केंद्र डेहरी</p>
+                        <p class="text-xs font-semibold text-clay-700 dark:text-amber-400 mt-2"><i class="fa-solid fa-phone text-[10px]"></i> 7607532242</p>
+                    </div>
+                </div>
+
+                <div class="mud-card p-5 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-leaf-600 text-white flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-amber-200 text-sm">प्राथमिक स्वास्थ्य केंद्र</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">आशा कार्यकर्ता / एएनएम</p>
+                        <p class="text-xs font-semibold text-leaf-600 dark:text-green-400 mt-2"><i class="fa-solid fa-phone text-[10px]"></i> 108 / एम्बुलेंस
+                    </div>
+                </div>
+
+                <div class="mud-card p-5 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-amber-200 text-sm">PANDEY KA POKHARA</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">पांडेय का पोखरा</p>
+                        <p class="text-xs font-semibold text-amber-600 dark:text-amber-400 mt-2"><i class="fa-solid fa-phone text-[10px]"></i>8795047737</p>
+                    </div>
+                </div>
+
+                <div class="mud-card p-5 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-amber-200 text-sm">ग्राम सुरक्षा समिति</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">आपातकालीन सहायता</p>
+                        <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2"><i class="fa-solid fa-phone text-[10px]"></i> 112 / स्थानीय चौकी</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-clay-900 text-slate-300 py-10 font-devanagari border-t border-amber-900/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex justify-center items-center gap-2 text-2xl font-yatra text-amber-300">
+                <i class="fa-solid fa-water"></i> पांडेय का पोखरा
+            </div>
+            <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+                यह आधिकारिक ग्राम पोर्टल हमारे पूर्वजों की धरोहर, पोखरे की निर्मलता और गाँववासियों के अटूट स्नेह को समर्पित है।
+            </p>
+            <p class="text-[11px] text-slate-500 pt-4 border-t border-slate-800">
+                © 2026 पांडेय का पोखरा | सर्वाधिकार सुरक्षित | ठेठ ग्रामीण भारत की अमर गाथा ❤️
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Day/Night Ambient View Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        const mainBody = document.getElementById('main-body');
+
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            mainBody.classList.toggle('night-mode-bg');
+        });
+
+        // 2D Animated Fish Canvas inside Central Pokhara
+        const canvas = document.getElementById('fishCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Fish particle objects
+        const fishes = Array.from({ length: 6 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 4 + 4,
+            speedX: (Math.random() - 0.5) * 1.5,
+            speedY: (Math.random() - 0.5) * 1.5,
+            color: Math.random() > 0.5 ? '#f97316' : '#facc15'
+        }));
+
+        function animateFishes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            fishes.forEach(fish => {
+                fish.x += fish.speedX;
+                fish.y += fish.speedY;
+
+                // Bounce off canvas edges inside round lake
+                if (fish.x < 10 || fish.x > canvas.width - 10) fish.speedX *= -1;
+                if (fish.y < 10 || fish.y > canvas.height - 10) fish.speedY *= -1;
+
+                // Draw fish
+                ctx.beginPath();
+                ctx.arc(fish.x, fish.y, fish.size, 0, Math.PI * 2);
+                ctx.fillStyle = fish.color;
+                ctx.fill();
+
+                // Tail
+                ctx.beginPath();
+                ctx.moveTo(fish.x - fish.speedX * 3, fish.y - fish.speedY * 3);
+                ctx.lineTo(fish.x - fish.speedX * 6 - 3, fish.y - fish.speedY * 6 + 3);
+                ctx.lineTo(fish.x - fish.speedX * 6 + 3, fish.y - fish.speedY * 6 - 3);
+                ctx.fillStyle = fish.color;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateFishes);
+        }
+        animateFishes();
+
+        // Node Hotspot Click Details Modal Logic
+        const nodeData = {
+            'north-ghat': {
+                title: "उत्तरी छठ घाट व सूर्य मंदिर",
+                icon: "fa-place-of-worship text-amber-600",
+                desc: "पोखरे का मुख्य पक्का घाट जहाँ छठ पूजा के समय भव्य मेला लगता है। घाट के साथ सटा प्राचीन सूर्य एवं शिव मंदिर स्थित है जहाँ नित्य संध्या आरती होती है।"
+            },
+            'east-houses': {
+                title: "पूर्वी टोला (तटवर्ती घर)",
+                icon: "fa-house-chimney text-clay-700",
+                desc: "पोखरे के पूर्वी किनारे पर बसे सुंदर घर, जहाँ प्रातःकाल सूर्यदेव की पहली किरण पोखरे के जल से परावर्तित होकर आँगनों को आलोकित करती है।"
+            },
+            'south-chaupal': {
+                title: "पुराना पीपल चबूतरा व चौपाल",
+                icon: "fa-tree text-leaf-600",
+                desc: "100 वर्ष से अधिक पुराना विशाल पीपल का पेड़। इसके नीचे बना विशाल पक्का चबूतरा गाँव की मुख्य चौपाल है जहाँ पंचायती निर्णय व शाम की गपशप होती है।"
+            },
+            'west-houses': {
+                title: "पश्चिमी बस्ती व पारंपरिक आंगन",
+                icon: "fa-house-crack text-amber-700",
+                desc: "पोखरे के पश्चिमी किनारे पर स्थित खपरैल और मिट्टी के पारंपरिक मकान, जहाँ गाय-भैंसों के थान और लिपे हुए सुंदर आंगन गाँव की विरासत दर्शाते हैं।"
+            },
+            'south-fields': {
+                title: "सरसों खेत व बतख पालन",
+                icon: "fa-wheat-awn text-amber-500",
+                desc: "पोखरे के दक्षिणी छोर पर फैले लहलहाते सरसों और गेहूं के खेत। पोखरे के पानी में तैरती रंग-बिरंगी बतखें दृश्य को मनमोहक बनाती हैं।"
+            }
+        };
+
+        function showNodeDetails(key) {
+            const data = nodeData[key];
+            if (!data) return;
+
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-xl">
+                        <i class="fa-solid ${data.icon}"></i>
+                    </div>
+                    <h3 class="font-yatra text-2xl text-slate-900 dark:text-amber-100">${data.title}</h3>
+                </div>
+                <p class="font-devanagari text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-4">${data.desc}</p>
+                <div class="pt-3 border-t border-clay-200 dark:border-slate-800 text-xs font-devanagari text-amber-700 dark:text-amber-400 font-bold">
+                    <i class="fa-solid fa-location-dot"></i> स्थान: पांडेय का पोखरा परिसर
+                </div>
+            `;
+
+            document.getElementById('node-modal').classList.remove('hidden');
+        }
+
+        function closeNodeModal() {
+            document.getElementById('node-modal').classList.add('hidden');
+        }
+
+        // Diya / Lotus Offering Logic
+        const diyaForm = document.getElementById('diya-form');
+        const floatingLayer = document.getElementById('floating-objects-layer');
+
+        diyaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('offering-name').value.trim();
+            const type = document.getElementById('offering-type').value;
+
+            if (!name) return;
+
+            const emoji = type === 'diya' ? '🪔' : '🪷';
+            
+            // Random position inside lake bounds
+            const top = Math.floor(Math.random() * 40 + 30);
+            const left = Math.floor(Math.random() * 40 + 30);
+
+            const newItem = document.createElement('div');
+            newItem.className = 'absolute floating-element text-2xl drop-shadow-lg cursor-pointer transition-all hover:scale-125';
+            newItem.style.top = top + '%';
+            newItem.style.left = left + '%';
+            newItem.title = `${name} का ${type === 'diya' ? 'दीया' : 'कमल'}`;
+            newItem.innerHTML = emoji;
+
+            floatingLayer.appendChild(newItem);
+
+            alert(`धन्यवाद ${name}! आपका ${type === 'diya' ? 'सजल दीया' : 'कमल'} पोखरे के जल में सफलतापूर्वक प्रवाहित कर दिया गया है।`);
+            diyaForm.reset();
+        });
+
+        // Toggle Wooden Noticeboard Form
+        function toggleNoticeForm() {
+            const form = document.getElementById('notice-form');
+            form.classList.toggle('hidden');
+        }
+
+        // Add Notice Submission
+        const noticeForm = document.getElementById('notice-form');
+        const noticeContainer = document.getElementById('notice-container');
+
+        noticeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('notice-title').value.trim();
+            const body = document.getElementById('notice-body').value.trim();
+            const author = document.getElementById('notice-author').value.trim();
+
+            if (!title || !body || !author) return;
+
+            const newPaper = document.createElement('div');
+            newPaper.className = 'notice-paper p-5 rounded-lg text-slate-900 relative';
+            newPaper.innerHTML = `
+                <div class="w-4 h-4 rounded-full bg-emerald-600 shadow-md absolute -top-2 left-1/2 -translate-x-1/2"></div>
+                <span class="text-[10px] font-bold text-clay-800 font-devanagari block mb-1">📌 नया सन्देश</span>
+                <h4 class="font-devanagari font-bold text-base mb-2">${title}</h4>
+                <p class="font-devanagari text-xs text-slate-700 leading-relaxed">${body}</p>
+                <span class="text-[10px] text-slate-500 font-devanagari block mt-3 text-right">- ${author}</span>
+            `;
+
+            noticeContainer.insertBefore(newPaper, noticeContainer.firstChild);
+            noticeForm.reset();
+            toggleNoticeForm();
+        });
+    </script>
+</body>
+</html>
       <div class="gallery">
         <figure><img src="pokhara-1.jpg" alt="पांडेय का पोखरा और किनारे का रास्ता" loading="lazy"><figcaption>🌿 पोखरा और किनारे का रास्ता</figcaption></figure>
 <figure><img src="pokhara-2.jpg" alt="पोखरा के किनारे गाँव के लोग" loading="lazy"><figcaption>🏡 पोखरा के आसपास का दृश्य</figcaption></figure>
